@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Anik Biswas</title>
+<meta name="description" content="Selected deep learning and hardware projects by Anik Biswas.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230e6e56'/%3E%3Cpath d='M5 18l4-8 4 12 4-16 4 12 4-8' stroke='white' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true">AB</span>
+      <span class="brand-name">Anik Biswas</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="primary-nav" class="primary-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="updates.html" class="nav-link">Updates</a>
+      <a href="experience.html" class="nav-link">Experience</a>
+      <a href="projects.html" class="nav-link">Projects</a>
+      <a href="publications.html" class="nav-link">Publications</a>
+      <a href="hobbies.html" class="nav-link">Hobbies</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-head container">
+    
+    <h1>Projects</h1>
+    <p class="section-sub">A selection of deep learning and hardware work, from federated learning pipelines to gate-level logic.</p>
+  </section>
+
+  <section class="section container">
+    <div class="section-head">
+      <h2>Deep learning projects</h2>
+    </div>
+    <div class="grid-2">
+
+      <div class="card">
+        <h3>FedMIM-LoRA</h3>
+        <div class="card-meta">Federated Learning · Vision Transformers · LoRA</div>
+        <p>Engineered a compute-efficient federated learning pipeline for Vision Transformers by combining Masked Image Modeling with a fixed-A LoRA strategy, removing aggregation mismatch and enabling robust non-IID training on resource-constrained GPUs.</p>
+        <div class="chip-row">
+          <span class="chip">PyTorch</span>
+          <span class="chip">Federated Learning</span>
+          <span class="chip">LoRA</span>
+        </div>
+        <a class="card-link" href="https://github.com/anikbiswas730" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+      </div>
+
+      <div class="card">
+        <h3>Brain-to-Text Decoder</h3>
+        <div class="card-meta">Deep Learning · NLP · Signal Processing</div>
+        <p>Built a deep learning model to decode neural signals into natural language text, using neural network architectures to bridge human-computer interaction and natural language processing.</p>
+        <div class="chip-row">
+          <span class="chip">Deep Learning</span>
+          <span class="chip">NLP</span>
+          <span class="chip">Signal Processing</span>
+        </div>
+        <a class="card-link" href="https://github.com/anikbiswas730" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider container">
+
+  <section class="section container">
+    <div class="section-head">
+      <h2>Hardware projects</h2>
+    </div>
+    <div class="grid-2">
+
+      <div class="card">
+        <h3>Smart Home Security System</h3>
+        <div class="card-meta">IoT · ESP32-CAM · Circuit Design</div>
+        <p>Designed a scalable IoT security setup with a custom multiplexer circuit for multi-sensor integration and an ESP32-CAM for real-time, cloud-based intruder detection and image capture.</p>
+        <div class="chip-row">
+          <span class="chip chip-copper">IoT</span>
+          <span class="chip chip-copper">ESP32-CAM</span>
+        </div>
+        <a class="card-link" href="https://github.com/anikbiswas730" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+      </div>
+
+      <div class="card">
+        <h3>Smart Inventory Management System</h3>
+        <div class="card-meta">Python · YOLOv5 · ROS · 6-DOF Arm</div>
+        <p>Built a voice-controlled autonomous mobile manipulator integrating YOLOv5 for precision object detection and inverse kinematics for a 6-DOF arm, enabling hands-free inventory retrieval.</p>
+        <div class="chip-row">
+          <span class="chip chip-copper">YOLOv5</span>
+          <span class="chip chip-copper">ROS</span>
+        </div>
+        <a class="card-link" href="https://github.com/anikbiswas730" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+      </div>
+
+      <div class="card">
+        <h3>Digital Logic Tic-Tac-Toe Game</h3>
+        <div class="card-meta">Digital Logic · Flip-Flops · Hardware Implementation</div>
+        <p>Built a gate-level hardware game system using combinational logic and flip-flops, with autonomous win-state detection and state management &mdash; no microcontroller involved.</p>
+        <div class="chip-row">
+          <span class="chip chip-copper">Digital Logic</span>
+          <span class="chip chip-copper">Flip-Flops</span>
+        </div>
+        <a class="card-link" href="https://github.com/anikbiswas730" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-wrap">
+    <div class="footer-brand">Anik Biswas</div>
+    <div class="footer-links">
+      <a href="mailto:anikbiswas730@gmail.com">Email</a>
+      <a href="tel:+8801884494589">Phone</a>
+      <a href="https://linkedin.com/in/anik-biswas-588698281" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/anikbiswas730" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.researchgate.net/profile/Anik-Biswas-15" target="_blank" rel="noopener">ResearchGate</a>
+    </div>
+    <div class="footer-note">Dhaka, Bangladesh</div>
+  </div>
+</footer>s
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
