@@ -10,46 +10,41 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
-<link rel="preload" as="image" href="attachment/index_photo.jpg" fetchpriority="high">
 
 <!-- Profile photo styling -->
 <style>
   .profile-photo-wrap {
+    position: relative;
     width: 220px;
     height: 220px;
     margin-bottom: 1.5rem;
-  }
-  .profile-photo {
-    width: 100%;
-    height: 100%;
     border-radius: 50%;
-    object-fit: cover;
-    /* Biases the crop toward the upper portion of the photo so a face
-       isn't cut off the way a dead-center crop can when the source
-       photo isn't square — that off-center, too-tight crop is what
-       was reading as a harsh, noisy zoom. */
-    object-position: center 20%;
+    overflow: hidden;
+    background: var(--bg-soft, #f6f8f7);
     box-shadow: var(--shadow, 0 4px 16px rgba(16, 26, 23, 0.18));
     border: 4px solid var(--bg, #fff);
-
-    /* Stay invisible until the image has fully finished loading and
-       decoding, so the browser never gets a chance to paint a partial,
-       blurry/blocky in-progress scan (what a progressive JPEG shows
-       while it's still downloading — the "noisy on first load, clean
-       after refresh" symptom). The keyframe below is just a safety net
-       in case the onload handler is ever skipped; JS normally reveals
-       it well before this fires. */
-    opacity: 0;
-    animation: reveal-photo 0s 1.4s forwards;
   }
-  .profile-photo.is-loaded {
-    animation: none;
-    opacity: 1;
-    transition: opacity 0.3s ease;
+  /* Blurred copy fills the circle edge-to-edge behind the photo, so there's
+     no empty gap around it — this layer is allowed to crop/zoom since it's
+     just a soft-focus backdrop, never the sharp image itself. */
+  .profile-photo-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(20px) saturate(1.1) brightness(0.92);
+    transform: scale(1.2);
   }
-  @keyframes reveal-photo { to { opacity: 1; } }
-  @media (prefers-reduced-motion: reduce) {
-    .profile-photo { opacity: 1; animation: none; }
+  /* The real photo: shown in full at its native aspect ratio, never
+     cropped and never scaled up past what it needs — this is what
+     removes the cropped/zoomed, noisy-looking result. */
+  .profile-photo-fg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 1;
   }
 </style>
 
@@ -81,7 +76,8 @@
   <section class="hero container">
     <!-- Profile Picture -->
     <div class="profile-photo-wrap">
-      <img src="attachment/index_photo.JPG" alt="Anik Biswas" class="profile-photo" width="220" height="220" loading="eager" decoding="async" onload="this.classList.add('is-loaded')">
+      <img class="profile-photo-bg" src="attachment/index_photo.jpg" alt="" aria-hidden="true">
+      <img class="profile-photo-fg" src="attachment/index_photo.jpg" alt="Anik Biswas" loading="eager" decoding="async">
     </div>
 
 
