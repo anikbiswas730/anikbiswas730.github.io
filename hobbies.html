@@ -10,6 +10,98 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
+
+<!-- Custom CSS for the Image Sliders -->
+<style>
+  .carousel {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    max-height: 420px;
+    border-radius: var(--radius, 12px);
+    overflow: hidden;
+    margin-top: 1.5rem;
+    background: var(--bg-soft, #f6f8f7);
+    box-shadow: var(--shadow, 0 1px 2px rgba(16,26,23,0.04), 0 8px 24px -12px rgba(16,26,23,0.12));
+  }
+
+  /* Each slide holds a blurred backdrop (fills the frame, no letterboxing)
+     plus the real photo shown in full via object-fit: contain, so nothing
+     gets cropped or scaled past its native size — that cropping-to-fill is
+     what was reading as a harsh, noisy zoom on the source photos. */
+  .slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease;
+  }
+  .slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+  }
+  .slide-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(26px) saturate(1.15) brightness(0.9);
+    transform: scale(1.15);
+  }
+  .slide-fg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 1;
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(16, 26, 23, 0.55);
+    color: #fff;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: background 0.2s ease;
+  }
+  .carousel-btn:hover { background: rgba(16, 26, 23, 0.85); }
+  .carousel-btn.prev { left: 10px; }
+  .carousel-btn.next { right: 10px; }
+
+  .carousel-dots {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 12px;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+  }
+  .carousel-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.55);
+    cursor: pointer;
+  }
+  .carousel-dot.active { background: #fff; }
+</style>
+
 </head>
 <body>
 
@@ -35,34 +127,125 @@
 
 <main>
   <section class="page-head container">
-    
+    <div class="eyebrow">// off the clock</div>
     <h1>Hobbies</h1>
     <p class="section-sub">A few things I enjoy outside the lab and the classroom.</p>
   </section>
 
   <section class="section container">
+    <div class="grid-2">
 
-    <div class="placeholder-note">
-      This page is a starting point &mdash; your CV didn't list hobbies, so these are placeholders.
-      Open <code>hobbies.html</code> and swap in the real thing (photography, cricket, chess,
-      reading, whatever it is), or tell me what you'd like here and I'll fill it in for you.
+      <div class="card hobby-card">
+        <h3>Photography</h3>
+        <p>I love clicking photos of the clouds and nature. There's something incredibly peaceful about capturing the perfect light or a unique cloud formation.</p>
+
+        <!-- Cloud/Nature Slider -->
+        <div class="carousel" id="nature-slider">
+          <div class="slide active">
+            <img class="slide-bg" src="attachment/hobbies/photography/cloud1.JPG" alt="" aria-hidden="true" loading="lazy">
+            <img class="slide-fg" src="attachment/hobbies/photography/cloud1.JPG" alt="Cloud formation, view one" loading="eager">
+          </div>
+          <div class="slide">
+            <img class="slide-bg" src="attachment/hobbies/photography/cloud2.JPG" alt="" aria-hidden="true" loading="lazy">
+            <img class="slide-fg" src="attachment/hobbies/photography/cloud2.JPG" alt="Cloud formation, view two" loading="lazy">
+          </div>
+          <div class="slide">
+            <img class="slide-bg" src="attachment/hobbies/photography/cloud3.JPG" alt="" aria-hidden="true" loading="lazy">
+            <img class="slide-fg" src="attachment/hobbies/photography/cloud3.JPG" alt="Cloud formation, view three" loading="lazy">
+          </div>
+          <div class="slide">
+            <img class="slide-bg" src="attachment/hobbies/photography/cloud4.JPG" alt="" aria-hidden="true" loading="lazy">
+            <img class="slide-fg" src="attachment/hobbies/photography/cloud4.JPG" alt="Cloud formation, view four" loading="lazy">
+          </div>
+          <div class="slide">
+            <img class="slide-bg" src="attachment/hobbies/photography/cloud5.JPG" alt="" aria-hidden="true" loading="lazy">
+            <img class="slide-fg" src="attachment/hobbies/photography/cloud5.JPG" alt="Cloud formation, view five" loading="lazy">
+          </div>
+          <div class="slide">
+            <img class="slide-bg" src="attachment/hobbies/photography/cloud6.JPG" alt="" aria-hidden="true" loading="lazy">
+            <img class="slide-fg" src="attachment/hobbies/photography/cloud6.JPG" alt="Cloud formation, view six" loading="lazy">
+          </div>
+          <div class="slide">
+            <img class="slide-bg" src="attachment/hobbies/photography/cloud7.JPG" alt="" aria-hidden="true" loading="lazy">
+            <img class="slide-fg" src="attachment/hobbies/photography/cloud7.JPG" alt="Cloud formation, view seven" loading="lazy">
+          </div>
+          <div class="slide">
+            <img class="slide-bg" src="attachment/hobbies/photography/cloud8.JPG" alt="" aria-hidden="true" loading="lazy">
+            <img class="slide-fg" src="attachment/hobbies/photography/cloud8.JPG" alt="Cloud formation, view eight" loading="lazy">
+          </div>
+          <div class="slide">
+            <img class="slide-bg" src="attachment/hobbies/photography/cloud9.JPG" alt="" aria-hidden="true" loading="lazy">
+            <img class="slide-fg" src="attachment/hobbies/photography/cloud9.JPG" alt="Cloud formation, view nine" loading="lazy">
+          </div>
+          <div class="slide">
+            <img class="slide-bg" src="attachment/hobbies/photography/cloud10.JPG" alt="" aria-hidden="true" loading="lazy">
+            <img class="slide-fg" src="attachment/hobbies/photography/cloud10.JPG" alt="Cloud formation, view ten" loading="lazy">
+          </div>
+          <div class="slide">
+            <img class="slide-bg" src="attachment/hobbies/photography/cloud11.JPG" alt="" aria-hidden="true" loading="lazy">
+            <img class="slide-fg" src="attachment/hobbies/photography/cloud11.JPG" alt="Cloud formation, view eleven" loading="lazy">
+          </div>
+          <div class="slide">
+            <img class="slide-bg" src="attachment/hobbies/photography/cloud12.JPG" alt="" aria-hidden="true" loading="lazy">
+            <img class="slide-fg" src="attachment/hobbies/photography/cloud12.JPG" alt="Cloud formation, view twelve" loading="lazy">
+          </div>
+          <div class="slide">
+            <img class="slide-bg" src="attachment/hobbies/photography/cloud13.JPG" alt="" aria-hidden="true" loading="lazy">
+            <img class="slide-fg" src="attachment/hobbies/photography/cloud13.JPG" alt="Cloud formation, view thirteen" loading="lazy">
+          </div>
+          <div class="slide">
+            <img class="slide-bg" src="attachment/hobbies/photography/cloud14.JPG" alt="" aria-hidden="true" loading="lazy">
+            <img class="slide-fg" src="attachment/hobbies/photography/cloud14.JPG" alt="Cloud formation, view fourteen" loading="lazy">
+          </div>
+          <div class="slide">
+            <img class="slide-bg" src="attachment/hobbies/photography/cloud15.JPG" alt="" aria-hidden="true" loading="lazy">
+            <img class="slide-fg" src="attachment/hobbies/photography/cloud15.JPG" alt="Cloud formation, view fifteen" loading="lazy">
+          </div>
+          <div class="slide">
+            <img class="slide-bg" src="attachment/hobbies/photography/cloud16.JPG" alt="" aria-hidden="true" loading="lazy">
+            <img class="slide-fg" src="attachment/hobbies/photography/cloud16.JPG" alt="Cloud formation, view sixteen" loading="lazy">
+          </div>
+
+          <button class="carousel-btn prev" onclick="moveSlide('nature-slider', -1)" aria-label="Previous image">&#10094;</button>
+          <button class="carousel-btn next" onclick="moveSlide('nature-slider', 1)" aria-label="Next image">&#10095;</button>
+          <div class="carousel-dots"></div>
+        </div>
+      </div>
+
+      <div class="card hobby-card">
+        <h3>Travelling</h3>
+        <p>I love travelling, exploring new places, and stepping away from the daily routine to experience different environments and perspectives.</p>
+
+        <!-- Travel Slider -->
+        <div class="carousel" id="travel-slider">
+          <div class="slide active">
+            <img class="slide-bg" src="attachment/hobbies/travel/01.JPG" alt="" aria-hidden="true" loading="lazy">
+            <img class="slide-fg" src="attachment/hobbies/travel/01.JPG" alt="Travel photo, view one" loading="eager">
+          </div>
+          <div class="slide">
+            <img class="slide-bg" src="attachment/hobbies/travel/02.JPG" alt="" aria-hidden="true" loading="lazy">
+            <img class="slide-fg" src="attachment/hobbies/travel/02.JPG" alt="Travel photo, view two" loading="lazy">
+          </div>
+          <div class="slide">
+            <img class="slide-bg" src="attachment/hobbies/travel/03.JPG" alt="" aria-hidden="true" loading="lazy">
+            <img class="slide-fg" src="attachment/hobbies/travel/03.JPG" alt="Travel photo, view three" loading="lazy">
+          </div>
+          <div class="slide">
+            <img class="slide-bg" src="attachment/hobbies/travel/04.JPG" alt="" aria-hidden="true" loading="lazy">
+            <img class="slide-fg" src="attachment/hobbies/travel/04.JPG" alt="Travel photo, view four" loading="lazy">
+          </div>
+          <div class="slide">
+            <img class="slide-bg" src="attachment/hobbies/travel/05.JPG" alt="" aria-hidden="true" loading="lazy">
+            <img class="slide-fg" src="attachment/hobbies/travel/05.JPG" alt="Travel photo, view five" loading="lazy">
+          </div>
+
+          <button class="carousel-btn prev" onclick="moveSlide('travel-slider', -1)" aria-label="Previous image">&#10094;</button>
+          <button class="carousel-btn next" onclick="moveSlide('travel-slider', 1)" aria-label="Next image">&#10095;</button>
+          <div class="carousel-dots"></div>
+        </div>
+      </div>
+
     </div>
-
-    <div class="grid-3">
-      <div class="card hobby-card">
-        <h3>Hobby one</h3>
-        <p><em>Add a hobby &mdash; e.g. photography, football, chess &mdash; and a line or two about it.</em></p>
-      </div>
-      <div class="card hobby-card">
-        <h3>Hobby two</h3>
-        <p><em>Add another interest here.</em></p>
-      </div>
-      <div class="card hobby-card">
-        <h3>Hobby three</h3>
-        <p><em>And one more, if you'd like.</em></p>
-      </div>
-    </div>
-
   </section>
 </main>
 
@@ -81,5 +264,51 @@
 </footer>
 
 <script src="assets/js/main.js"></script>
+<!-- Script for Image Sliders -->
+<script>
+  function getSlides(sliderId) {
+    return document.getElementById(sliderId).querySelectorAll('.slide');
+  }
+
+  function goToSlide(sliderId, index) {
+    var slides = getSlides(sliderId);
+    var current = Array.from(slides).findIndex(function (s) { return s.classList.contains('active'); });
+    if (index === current) return;
+    slides[current].classList.remove('active');
+    slides[index].classList.add('active');
+    updateDots(sliderId, index);
+  }
+
+  function moveSlide(sliderId, direction) {
+    var slides = getSlides(sliderId);
+    var current = Array.from(slides).findIndex(function (s) { return s.classList.contains('active'); });
+    var next = (current + direction + slides.length) % slides.length;
+    goToSlide(sliderId, next);
+  }
+
+  function updateDots(sliderId, activeIndex) {
+    var dots = document.querySelectorAll('#' + sliderId + ' .carousel-dot');
+    dots.forEach(function (dot, i) {
+      dot.classList.toggle('active', i === activeIndex);
+    });
+  }
+
+  function initCarousels() {
+    document.querySelectorAll('.carousel').forEach(function (carousel) {
+      var sliderId = carousel.id;
+      var slides = carousel.querySelectorAll('.slide');
+      var dotsWrap = carousel.querySelector('.carousel-dots');
+      slides.forEach(function (slide, i) {
+        var dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Go to image ' + (i + 1));
+        dot.addEventListener('click', function () { goToSlide(sliderId, i); });
+        dotsWrap.appendChild(dot);
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initCarousels);
+</script>
 </body>
 </html>
