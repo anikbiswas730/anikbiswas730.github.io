@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
+<link rel="preload" as="image" href="attachment/index_photo.jpg" fetchpriority="high">
 
 <!-- Profile photo styling -->
 <style>
@@ -30,6 +31,25 @@
     object-position: center 20%;
     box-shadow: var(--shadow, 0 4px 16px rgba(16, 26, 23, 0.18));
     border: 4px solid var(--bg, #fff);
+
+    /* Stay invisible until the image has fully finished loading and
+       decoding, so the browser never gets a chance to paint a partial,
+       blurry/blocky in-progress scan (what a progressive JPEG shows
+       while it's still downloading — the "noisy on first load, clean
+       after refresh" symptom). The keyframe below is just a safety net
+       in case the onload handler is ever skipped; JS normally reveals
+       it well before this fires. */
+    opacity: 0;
+    animation: reveal-photo 0s 1.4s forwards;
+  }
+  .profile-photo.is-loaded {
+    animation: none;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+  @keyframes reveal-photo { to { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) {
+    .profile-photo { opacity: 1; animation: none; }
   }
 </style>
 
@@ -61,7 +81,7 @@
   <section class="hero container">
     <!-- Profile Picture -->
     <div class="profile-photo-wrap">
-      <img src="attachment/index_photo.JPG" alt="Anik Biswas" class="profile-photo" width="220" height="220" loading="eager" decoding="async">
+      <img src="attachment/index_photo.jpg" alt="Anik Biswas" class="profile-photo" width="220" height="220" loading="eager" decoding="async" onload="this.classList.add('is-loaded')">
     </div>
 
 
